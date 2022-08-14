@@ -8,6 +8,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface CustomerRepository extends JpaRepository<Customer, String> {
-    @Query("select a from Customer a")
-    Page<Customer> findAllCustomers(Pageable pageable);
 }

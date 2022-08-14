@@ -6,9 +6,8 @@ import com.etiya.northwind.business.requests.supplierRequests.DeleteSupplierRequ
 import com.etiya.northwind.business.requests.supplierRequests.UpdateSupplierRequest;
 import com.etiya.northwind.business.responses.suppliers.ListSupplierResponse;
 import com.etiya.northwind.business.responses.suppliers.ReadSupplierResponse;
-import com.etiya.northwind.core.mapping.Results.DataResult;
-import com.etiya.northwind.core.mapping.Results.Result;
-import com.etiya.northwind.entities.concretes.Supplier;
+import com.etiya.northwind.core.utilities.Results.DataResult;
+import com.etiya.northwind.core.utilities.Results.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

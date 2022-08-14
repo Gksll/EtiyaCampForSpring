@@ -6,9 +6,8 @@ import com.etiya.northwind.business.requests.productRequests.DeleteProductReques
 import com.etiya.northwind.business.requests.productRequests.UpdateProductRequest;
 import com.etiya.northwind.business.responses.products.ListProductResponse;
 import com.etiya.northwind.business.responses.products.ReadProductResponse;
-import com.etiya.northwind.core.mapping.Results.DataResult;
-import com.etiya.northwind.core.mapping.Results.Result;
-import com.etiya.northwind.entities.concretes.Product;
+import com.etiya.northwind.core.utilities.Results.DataResult;
+import com.etiya.northwind.core.utilities.Results.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

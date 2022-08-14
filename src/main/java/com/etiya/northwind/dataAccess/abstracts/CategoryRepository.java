@@ -8,7 +8,5 @@ import org.springframework.data.jpa.repository.Query;
 
 
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
-    @Query("select a from Category a")
-    Page<Category> findAllCategories(Pageable pageable);
-
+    Category findByCategoryName(String name);
 }

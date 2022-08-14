@@ -20,4 +20,6 @@ public class ReadEmployeeResponse {
     private String lastName;
     @NotNull
     private String title;
+    @NotNull
+    private Integer reportsTo;
 }

@@ -6,11 +6,11 @@ import com.etiya.northwind.business.requests.customerRequests.DeleteCustomerRequ
 import com.etiya.northwind.business.requests.customerRequests.UpdateCustomerRequest;
 import com.etiya.northwind.business.responses.customers.ListCustomerResponse;
 import com.etiya.northwind.business.responses.customers.ReadCustomerResponse;
-import com.etiya.northwind.core.mapping.ModelMapperService;
-import com.etiya.northwind.core.mapping.Results.DataResult;
-import com.etiya.northwind.core.mapping.Results.Result;
-import com.etiya.northwind.core.mapping.Results.SuccessDataResult;
-import com.etiya.northwind.core.mapping.Results.SuccessResult;
+import com.etiya.northwind.core.utilities.mapping.ModelMapperService;
+import com.etiya.northwind.core.utilities.Results.DataResult;
+import com.etiya.northwind.core.utilities.Results.Result;
+import com.etiya.northwind.core.utilities.Results.SuccessDataResult;
+import com.etiya.northwind.core.utilities.Results.SuccessResult;
 import com.etiya.northwind.dataAccess.abstracts.CustomerRepository;
 import com.etiya.northwind.entities.concretes.Customer;
 import org.springframework.beans.factory.annotation.Autowired;

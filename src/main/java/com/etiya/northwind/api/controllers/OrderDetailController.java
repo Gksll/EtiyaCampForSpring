@@ -1,20 +1,13 @@
 package com.etiya.northwind.api.controllers;
 
 import com.etiya.northwind.business.abstracts.OrderDetailService;
-import com.etiya.northwind.business.requests.categoryRequests.CreateCategoryRequest;
-import com.etiya.northwind.business.requests.categoryRequests.DeleteCategoryRequest;
-import com.etiya.northwind.business.requests.categoryRequests.UpdateCategoryRequest;
 import com.etiya.northwind.business.requests.orderDetailRequests.CreateOrderDetailRequest;
 import com.etiya.northwind.business.requests.orderDetailRequests.DeleteOrderDetailRequest;
 import com.etiya.northwind.business.requests.orderDetailRequests.UpdateOrderDetailRequest;
-import com.etiya.northwind.business.responses.categories.ListCategoryResponse;
-import com.etiya.northwind.business.responses.categories.ReadCategoryResponse;
 import com.etiya.northwind.business.responses.orderDetails.ListOrderDetailResponse;
 import com.etiya.northwind.business.responses.orderDetails.ReadOrderDetailResponse;
-import com.etiya.northwind.core.mapping.Results.DataResult;
-import com.etiya.northwind.core.mapping.Results.Result;
-import com.etiya.northwind.entities.concretes.Category;
-import com.etiya.northwind.entities.concretes.OrderDetail;
+import com.etiya.northwind.core.utilities.Results.DataResult;
+import com.etiya.northwind.core.utilities.Results.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

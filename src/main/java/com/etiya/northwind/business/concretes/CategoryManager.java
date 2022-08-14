@@ -4,27 +4,22 @@ import com.etiya.northwind.business.abstracts.CategoryService;
 import com.etiya.northwind.business.requests.categoryRequests.CreateCategoryRequest;
 import com.etiya.northwind.business.requests.categoryRequests.DeleteCategoryRequest;
 import com.etiya.northwind.business.requests.categoryRequests.UpdateCategoryRequest;
-import com.etiya.northwind.business.responses.PageDataResponse;
 import com.etiya.northwind.business.responses.categories.ListCategoryResponse;
 import com.etiya.northwind.business.responses.categories.ReadCategoryResponse;
-import com.etiya.northwind.core.mapping.ModelMapperService;
-import com.etiya.northwind.core.mapping.Results.DataResult;
-import com.etiya.northwind.core.mapping.Results.Result;
-import com.etiya.northwind.core.mapping.Results.SuccessDataResult;
-import com.etiya.northwind.core.mapping.Results.SuccessResult;
-import com.etiya.northwind.core.mapping.exceptions.BusinessException;
+import com.etiya.northwind.core.utilities.mapping.ModelMapperService;
+import com.etiya.northwind.core.utilities.Results.DataResult;
+import com.etiya.northwind.core.utilities.Results.Result;
+import com.etiya.northwind.core.utilities.Results.SuccessDataResult;
+import com.etiya.northwind.core.utilities.Results.SuccessResult;
+import com.etiya.northwind.core.utilities.exceptions.BusinessException;
 import com.etiya.northwind.dataAccess.abstracts.CategoryRepository;
 import com.etiya.northwind.entities.concretes.Category;
-import com.etiya.northwind.entities.concretes.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,6 +32,7 @@ public class CategoryManager implements CategoryService {
 
     @Override
     public Result add(CreateCategoryRequest createCategoryRequest) {
+        checkIfCategoryNameExists(createCategoryRequest.getCategoryName());
         checkIfCategoryExistsById(createCategoryRequest.getCategoryId());
         Category category = this.modelMapperService.forRequest().map(createCategoryRequest, Category.class);
         this.categoryRepository.save(category);
@@ -122,5 +118,11 @@ public class CategoryManager implements CategoryService {
             pageable = PageRequest.of(pageNo - 1, pageSize, Sort.by(field).ascending());
         }
         return pageable;
+    }
+    private void checkIfCategoryNameExists(String name) {
+        Category category = this.categoryRepository.findByCategoryName(name);
+        if (category != null) {
+            throw new BusinessException("CHECK CATEGORY NAME!");
+        }
     }
 }

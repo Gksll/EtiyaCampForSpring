@@ -3,13 +3,10 @@ package com.etiya.northwind.business.abstracts;
 import com.etiya.northwind.business.requests.orderDetailRequests.CreateOrderDetailRequest;
 import com.etiya.northwind.business.requests.orderDetailRequests.DeleteOrderDetailRequest;
 import com.etiya.northwind.business.requests.orderDetailRequests.UpdateOrderDetailRequest;
-import com.etiya.northwind.business.responses.employees.ListEmployeeResponse;
-import com.etiya.northwind.business.responses.employees.ReadEmployeeResponse;
 import com.etiya.northwind.business.responses.orderDetails.ListOrderDetailResponse;
 import com.etiya.northwind.business.responses.orderDetails.ReadOrderDetailResponse;
-import com.etiya.northwind.core.mapping.Results.DataResult;
-import com.etiya.northwind.core.mapping.Results.Result;
-import com.etiya.northwind.entities.concretes.OrderDetail;
+import com.etiya.northwind.core.utilities.Results.DataResult;
+import com.etiya.northwind.core.utilities.Results.Result;
 
 import java.util.List;
 

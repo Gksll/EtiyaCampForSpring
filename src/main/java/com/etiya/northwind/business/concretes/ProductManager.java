@@ -4,20 +4,17 @@ import com.etiya.northwind.business.abstracts.ProductService;
 import com.etiya.northwind.business.requests.productRequests.CreateProductRequest;
 import com.etiya.northwind.business.requests.productRequests.DeleteProductRequest;
 import com.etiya.northwind.business.requests.productRequests.UpdateProductRequest;
-import com.etiya.northwind.business.responses.orders.ListOrderResponse;
-import com.etiya.northwind.business.responses.orders.ReadOrderResponse;
 import com.etiya.northwind.business.responses.products.ListProductResponse;
 import com.etiya.northwind.business.responses.products.ReadProductResponse;
-import com.etiya.northwind.core.mapping.ModelMapperService;
-import com.etiya.northwind.core.mapping.Results.DataResult;
-import com.etiya.northwind.core.mapping.Results.Result;
-import com.etiya.northwind.core.mapping.Results.SuccessDataResult;
-import com.etiya.northwind.core.mapping.Results.SuccessResult;
-import com.etiya.northwind.core.mapping.exceptions.BusinessException;
+import com.etiya.northwind.core.utilities.mapping.ModelMapperService;
+import com.etiya.northwind.core.utilities.Results.DataResult;
+import com.etiya.northwind.core.utilities.Results.Result;
+import com.etiya.northwind.core.utilities.Results.SuccessDataResult;
+import com.etiya.northwind.core.utilities.Results.SuccessResult;
+import com.etiya.northwind.core.utilities.exceptions.BusinessException;
 import com.etiya.northwind.dataAccess.abstracts.ProductRepository;
 import com.etiya.northwind.entities.concretes.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -36,6 +33,7 @@ public class ProductManager implements ProductService {
 
     @Override
     public Result add(CreateProductRequest createProductRequest) {
+        checkIfProductExistsByName(createProductRequest.getProductName());
         Product product = this.modelMapperService.forRequest().map(createProductRequest, Product.class);
         productRepository.save(product);
         return new SuccessResult("Added successfully");
@@ -110,5 +108,12 @@ public class ProductManager implements ProductService {
             pageable = PageRequest.of(pageNo - 1, pageSize, Sort.by(field).ascending());
         }
         return pageable;
+    }
+    private void checkIfProductExistsByName(String name)
+    {
+        Product currentProduct = productRepository.findByProductName(name);
+        if (currentProduct!=null) {
+            throw new BusinessException("PRODUCT EXISTS");
+        }
     }
 }

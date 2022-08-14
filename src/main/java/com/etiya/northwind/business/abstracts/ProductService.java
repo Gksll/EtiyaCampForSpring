@@ -3,15 +3,10 @@ package com.etiya.northwind.business.abstracts;
 import com.etiya.northwind.business.requests.productRequests.CreateProductRequest;
 import com.etiya.northwind.business.requests.productRequests.DeleteProductRequest;
 import com.etiya.northwind.business.requests.productRequests.UpdateProductRequest;
-import com.etiya.northwind.business.responses.PageDataResponse;
-import com.etiya.northwind.business.responses.categories.ListCategoryResponse;
-import com.etiya.northwind.business.responses.orders.ListOrderResponse;
-import com.etiya.northwind.business.responses.orders.ReadOrderResponse;
 import com.etiya.northwind.business.responses.products.ListProductResponse;
 import com.etiya.northwind.business.responses.products.ReadProductResponse;
-import com.etiya.northwind.core.mapping.Results.DataResult;
-import com.etiya.northwind.core.mapping.Results.Result;
-import com.etiya.northwind.entities.concretes.Product;
+import com.etiya.northwind.core.utilities.Results.DataResult;
+import com.etiya.northwind.core.utilities.Results.Result;
 
 import java.util.List;
 

@@ -1,28 +1,20 @@
 package com.etiya.northwind.business.concretes;
 
 import com.etiya.northwind.business.abstracts.EmployeeService;
-import com.etiya.northwind.business.requests.categoryRequests.DeleteCategoryRequest;
 import com.etiya.northwind.business.requests.employeeRequests.CreateEmployeeRequest;
 import com.etiya.northwind.business.requests.employeeRequests.DeleteEmployeeRequest;
 import com.etiya.northwind.business.requests.employeeRequests.UpdateEmployeeRequest;
-import com.etiya.northwind.business.responses.PageDataResponse;
-import com.etiya.northwind.business.responses.categories.ListCategoryResponse;
-import com.etiya.northwind.business.responses.categories.ReadCategoryResponse;
-import com.etiya.northwind.business.responses.customers.ListCustomerResponse;
-import com.etiya.northwind.business.responses.customers.ReadCustomerResponse;
 import com.etiya.northwind.business.responses.employees.ListEmployeeResponse;
 import com.etiya.northwind.business.responses.employees.ReadEmployeeResponse;
-import com.etiya.northwind.core.mapping.ModelMapperService;
-import com.etiya.northwind.core.mapping.Results.DataResult;
-import com.etiya.northwind.core.mapping.Results.Result;
-import com.etiya.northwind.core.mapping.Results.SuccessDataResult;
-import com.etiya.northwind.core.mapping.Results.SuccessResult;
-import com.etiya.northwind.core.mapping.exceptions.BusinessException;
+import com.etiya.northwind.core.utilities.mapping.ModelMapperService;
+import com.etiya.northwind.core.utilities.Results.DataResult;
+import com.etiya.northwind.core.utilities.Results.Result;
+import com.etiya.northwind.core.utilities.Results.SuccessDataResult;
+import com.etiya.northwind.core.utilities.Results.SuccessResult;
+import com.etiya.northwind.core.utilities.exceptions.BusinessException;
 import com.etiya.northwind.dataAccess.abstracts.EmployeeRepository;
-import com.etiya.northwind.entities.concretes.Category;
 import com.etiya.northwind.entities.concretes.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -41,6 +33,7 @@ public class EmployeeManager implements EmployeeService {
 
     @Override
     public Result add(CreateEmployeeRequest createEmployeeRequest) {
+        checkIEmployeeReportLimitExceeds(createEmployeeRequest.getReportsTo());
         Employee employee = this.modelMapperService.forRequest().map(createEmployeeRequest, Employee.class);
         employeeRepository.save(employee);
         return new SuccessResult("Added successfully");
@@ -113,6 +106,11 @@ public class EmployeeManager implements EmployeeService {
             pageable = PageRequest.of(pageNo - 1, pageSize, Sort.by(field).ascending());
         }
         return pageable;
-
+    }
+    private void checkIEmployeeReportLimitExceeds(int reportsTo) {
+        List<Employee> employees = this.employeeRepository.findByReportsTo(reportsTo);
+        if (employees.size() >= 10) {
+            throw new BusinessException("CHECK REPORTS COUNT'");
+        }
     }
 }

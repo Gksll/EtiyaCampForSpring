@@ -1,7 +1,7 @@
 package com.etiya.northwind;
 
-import com.etiya.northwind.core.mapping.Results.ErrorDataResult;
-import com.etiya.northwind.core.mapping.exceptions.BusinessException;
+import com.etiya.northwind.core.utilities.Results.ErrorDataResult;
+import com.etiya.northwind.core.utilities.exceptions.BusinessException;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,11 +11,13 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @SpringBootApplication
+@RestControllerAdvice
 public class NorthwindApplication {
 
 	public static void main(String[] args) {

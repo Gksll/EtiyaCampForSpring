@@ -27,6 +27,10 @@ public class Employee {
     @Column(name = "title")
     private String title;
 
+    @Column(name = "reports_to")
+    private Integer reportsTo;
+
+
     @OneToMany(mappedBy = "employee")
     private List<Order> orders;
 

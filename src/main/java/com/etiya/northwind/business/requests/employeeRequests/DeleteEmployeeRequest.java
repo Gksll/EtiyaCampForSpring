@@ -12,5 +12,5 @@ import javax.validation.constraints.NotNull;
 public class DeleteEmployeeRequest {
 
     @NotNull
-    private int employeeId;
+    private Integer employeeId;
 }

@@ -5,9 +5,8 @@ import com.etiya.northwind.business.requests.categoryRequests.DeleteCategoryRequ
 import com.etiya.northwind.business.requests.categoryRequests.UpdateCategoryRequest;
 import com.etiya.northwind.business.responses.categories.ListCategoryResponse;
 import com.etiya.northwind.business.responses.categories.ReadCategoryResponse;
-import com.etiya.northwind.core.mapping.Results.DataResult;
-import com.etiya.northwind.core.mapping.Results.Result;
-import com.etiya.northwind.entities.concretes.Category;
+import com.etiya.northwind.core.utilities.Results.DataResult;
+import com.etiya.northwind.core.utilities.Results.Result;
 
 
 import java.util.List;

@@ -2,19 +2,13 @@ package com.etiya.northwind.api.controllers;
 
 
 import com.etiya.northwind.business.abstracts.OrderService;
-import com.etiya.northwind.business.requests.customerRequests.DeleteCustomerRequest;
 import com.etiya.northwind.business.requests.orderRequests.CreateOrderRequest;
 import com.etiya.northwind.business.requests.orderRequests.DeleteOrderRequest;
 import com.etiya.northwind.business.requests.orderRequests.UpdateOrderRequest;
-import com.etiya.northwind.business.responses.PageDataResponse;
-import com.etiya.northwind.business.responses.customers.ListCustomerResponse;
-import com.etiya.northwind.business.responses.customers.ReadCustomerResponse;
 import com.etiya.northwind.business.responses.orders.ListOrderResponse;
 import com.etiya.northwind.business.responses.orders.ReadOrderResponse;
-import com.etiya.northwind.core.mapping.Results.DataResult;
-import com.etiya.northwind.core.mapping.Results.Result;
-import com.etiya.northwind.entities.concretes.Customer;
-import com.etiya.northwind.entities.concretes.Order;
+import com.etiya.northwind.core.utilities.Results.DataResult;
+import com.etiya.northwind.core.utilities.Results.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -19,4 +19,6 @@ public class UpdateEmployeeRequest {
     private String lastName;
     @NotNull
     private String title;
+    @NotNull
+    private Integer reportsTo;
 }
